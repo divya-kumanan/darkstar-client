@@ -1,0 +1,319 @@
+{
+	"info": {
+		"_postman_id": "68a5ceb9-a03e-4efa-b375-bff08e5ac2a7",
+		"name": "DarkStar Server",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Shuttle",
+			"item": [
+				{
+					"name": "Get Shuttle by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/shuttles/3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"shuttles",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Shuttles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/shuttles",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"shuttles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Shuttle",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"name\": \"Shuttle1\",\n    \"manufacturedDate\": \"2022-02-02\",\n    \"status\": \"READY_FOR_LAUNCH\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/shuttles/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"shuttles",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Shuttle",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Shuttle1\",\n    \"manufacturedDate\": \"2022-01-01T00:00:00.000Z\",\n    \"status\": \"READY_FOR_LAUNCH\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/shuttles",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"shuttles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Shuttle",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/shuttles/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"shuttles",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Mission",
+			"item": [
+				{
+					"name": "Get Mission by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/missions/2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"missions",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Missions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/missions",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"missions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Mission",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 5,\n        \"name\": \"Mission5\",\n        \"startDate\": \"2022-02-02\",\n        \"endDate\": \"2022-02-01\",\n        \"status\": \"IN_PROGRESS\",\n        \"shuttle\": {\n            \"id\": 1,\n            \"name\": \"Shuttle1\",\n            \"manufacturedDate\": \"2022-01-01\",\n            \"status\": \"READY_FOR_LAUNCH\"\n        }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/missions/5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"missions",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Mission",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Mission1\",\n    \"startDate\": \"2022-02-02T00:00:00.000Z\",\n    \"endDate\": null,\n    \"status\": \"PLANNED\",\n    \"shuttle\": {\n        \"id\": 1,\n        \"name\": \"Shuttle1\",\n        \"manufacturedDate\": \"2022-01-01\",\n        \"status\": \"READY_FOR_LAUNCH\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/missions",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"missions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MarsShuttle",
+			"item": [
+				{
+					"name": "Telemetry",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"latitude\": 37.7749,\n    \"longitude\": -122.4194,\n    \"altitude\": 80,\n    \"velocity\": 8,\n    \"systemStatus\": \"OPERATIONAL\",\n    \"timestamp\": \"2023-03-20T12:34:56.789Z\",\n    \"mission\": {\n        \"id\": 2\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}{{basePath}}/telemetry",
+							"host": [
+								"{{host}}{{basePath}}"
+							],
+							"path": [
+								"telemetry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Images",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/octet-stream",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "file",
+							"file": {
+								"src": "/Users/ashok/Downloads/54b76a95c65d17d725129a52a815ce58.jpeg"
+							},
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}{{basePath}}/images?missionId=2",
+							"host": [
+								"{{host}}{{basePath}}"
+							],
+							"path": [
+								"images"
+							],
+							"query": [
+								{
+									"key": "missionId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Health",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"reportingSystem\": \"ELECTRICAL\",\n    \"status\": \"DOWN\",\n    \"errorCode\": \"\",\n    \"errorDescription\": \"\",\n    \"reportingTimestamp\": \"2023-03-20T12:34:56.789Z\",\n    \"mission\": {\n        \"id\": 3\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}{{basePath}}/health",
+							"host": [
+								"{{host}}{{basePath}}"
+							],
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,182 @@
+{
+	"info": {
+		"_postman_id": "52b60a71-b46f-4512-8b5e-169f8abaf790",
+		"name": "DarkStar Client",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Publish Telemetry",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"latitude\": 37.7749,\n    \"longitude\": -122.4194,\n    \"altitude\": 80,\n    \"velocity\": 8,\n    \"systemStatus\": \"OPERATIONAL\",\n    \"timestamp\": \"2023-03-20T12:34:56.789Z\",\n    \"mission\": {\n        \"id\": 2\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}{{basePath}}/telemetry",
+					"host": [
+						"{{host}}{{basePath}}"
+					],
+					"path": [
+						"telemetry"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Publish Health",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"reportingSystem\": \"ELECTRICAL\",\n    \"status\": \"DOWN\",\n    \"errorCode\": \"\",\n    \"errorDescription\": \"\",\n    \"reportingTimestamp\": \"2023-03-20T12:34:56.789Z\",\n    \"mission\": {\n        \"id\": 3\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}{{basePath}}/health",
+					"host": [
+						"{{host}}{{basePath}}"
+					],
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Publish Image",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/octet-stream",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": "/Users/ashok/Downloads/visa-gold-recto-800x450.jpeg"
+					},
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}{{basePath}}/images?missionId=2",
+					"host": [
+						"{{host}}{{basePath}}"
+					],
+					"path": [
+						"images"
+					],
+					"query": [
+						{
+							"key": "missionId",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Swagger",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/v3/api-docs",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v3",
+						"api-docs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actuator Health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/actuator/health",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"actuator",
+						"health"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
