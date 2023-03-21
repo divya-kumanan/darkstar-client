@@ -1,5 +1,6 @@
 package com.darkstar.client.handler
 
+import com.darkstar.client.exception.BadRequestException
 import com.darkstar.client.exception.DarkStarServerException
 import com.darkstar.client.exception.MissionNotFoundException
 import com.darkstar.client.model.DarkStarResponse
@@ -21,5 +22,11 @@ class MarsShuttleExceptionHandler {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     fun handleMissionNotFoundException(ex: Exception): DarkStarResponse {
         return DarkStarResponse(message= ex.message, HttpStatus.NOT_FOUND.value())
+    }
+
+    @ExceptionHandler(BadRequestException::class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    fun handleBadRequestException(ex: Exception): DarkStarResponse {
+        return DarkStarResponse(message= ex.message, HttpStatus.BAD_REQUEST.value())
     }
 }
