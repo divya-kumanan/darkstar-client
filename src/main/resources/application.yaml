@@ -1,0 +1,9 @@
+server:
+    port: 8090
+    servlet:
+      context-path: /api/dark-star
+dark-star:
+  server:
+    api:
+      host: http://localhost:8080
+      telemetryUrl: /api/mars-shuttle/telemetry
