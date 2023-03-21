@@ -30,7 +30,7 @@ This will build a Docker image named `darkstar-client` using the Dockerfile in t
 ## Running the Docker container
 1. Run the Docker container:
 ```
-docker run -p 8080:8080 darkstar-client
+docker run -p 8090:8090 darkstar-client
 ```
 This will start the container and map port 8080 in the container to port 8080 on your host machine.
 

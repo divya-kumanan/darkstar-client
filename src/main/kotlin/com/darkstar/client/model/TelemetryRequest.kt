@@ -13,5 +13,8 @@ data class TelemetryRequest(
 )
 
 enum class TelemetryStatus {
-    RED, GREEN, BLUE
+    OPERATIONAL,
+    DEGRADED,
+    FAILED,
+    UNKNOWN
 }
