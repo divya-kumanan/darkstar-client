@@ -7,3 +7,5 @@ dark-star:
     api:
       host: http://localhost:8080
       telemetryUrl: /api/mars-shuttle/telemetry
+      healthUrl: /api/mars-shuttle/health
+      imageUrl: /api/mars-shuttle/images
