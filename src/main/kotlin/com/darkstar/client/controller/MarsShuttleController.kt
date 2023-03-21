@@ -64,6 +64,43 @@ class MarsShuttleController(private val darkStarService: DarkStarService) {
         return DarkStarResponse(message = message)
     }
 
+    @Operation(summary = "Publish Health Data")
+    @ApiResponses(
+        value = [
+            ApiResponse(
+                responseCode = "200", description = "Publishing Helath Data Successful",
+                content = [
+                    Content(
+                        mediaType = "application/json",
+                        array = ArraySchema(schema = Schema(implementation = DarkStarResponse::class))
+                    )]
+            ),
+            ApiResponse(
+                responseCode = "400", description = "Invalid Request",
+                content = [
+                    Content(
+                        mediaType = "application/json",
+                        array = ArraySchema(schema = Schema(implementation = DarkStarResponse::class))
+                    )]
+            ),
+            ApiResponse(
+                responseCode = "404", description = "Mission does not exists",
+                content = [
+                    Content(
+                        mediaType = "application/json",
+                        array = ArraySchema(schema = Schema(implementation = DarkStarResponse::class))
+                    )]
+            ),
+            ApiResponse(
+                responseCode = "500", description = "Internal Server Error",
+                content = [
+                    Content(
+                        mediaType = "application/json",
+                        array = ArraySchema(schema = Schema(implementation = DarkStarResponse::class))
+                    )]
+            )
+        ]
+    )
     @PostMapping("health")
     @ResponseStatus(HttpStatus.OK)
     fun publishHealthData(@RequestBody healthRequest: HealthRequest): DarkStarResponse {
@@ -72,6 +109,43 @@ class MarsShuttleController(private val darkStarService: DarkStarService) {
         return DarkStarResponse(message = message)
     }
 
+    @Operation(summary = "Publish Image Data")
+    @ApiResponses(
+        value = [
+            ApiResponse(
+                responseCode = "200", description = "Publishing Telemetry Data Successful",
+                content = [
+                    Content(
+                        mediaType = "application/json",
+                        array = ArraySchema(schema = Schema(implementation = DarkStarResponse::class))
+                    )]
+            ),
+            ApiResponse(
+                responseCode = "400", description = "Invalid Request",
+                content = [
+                    Content(
+                        mediaType = "application/json",
+                        array = ArraySchema(schema = Schema(implementation = DarkStarResponse::class))
+                    )]
+            ),
+            ApiResponse(
+                responseCode = "404", description = "Mission does not exists",
+                content = [
+                    Content(
+                        mediaType = "application/json",
+                        array = ArraySchema(schema = Schema(implementation = DarkStarResponse::class))
+                    )]
+            ),
+            ApiResponse(
+                responseCode = "500", description = "Internal Server Error",
+                content = [
+                    Content(
+                        mediaType = "application/json",
+                        array = ArraySchema(schema = Schema(implementation = DarkStarResponse::class))
+                    )]
+            )
+        ]
+    )
     @PostMapping("images")
     @ResponseStatus(HttpStatus.OK)
     fun publishImageData(@RequestBody byteArray: ByteArray, @RequestParam(required = false) missionId: Long?): DarkStarResponse {

@@ -5,19 +5,19 @@ import java.time.LocalDateTime
 data class HealthRequest(
     val reportingSystem: ReportingSystem,
     val status: HealthStatus,
-    val errorCode: String?,
-    val errorDescription: String?,
+    val errorCode: String? = null,
+    val errorDescription: String? = null,
     val reportingTimestamp: LocalDateTime,
     val mission: Mission
 )
-enum class ReportingSystem{
+enum class ReportingSystem {
     ELECTRICAL,
     LIFE_SUPPORT,
     PROPULSION,
     COMMUNICATION
 }
 
-enum class HealthStatus{
+enum class HealthStatus {
     UP,
     DOWN,
     UNKNOWN,
