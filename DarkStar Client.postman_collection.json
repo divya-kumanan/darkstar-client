@@ -6,177 +6,705 @@
 	},
 	"item": [
 		{
-			"name": "Publish Telemetry",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
+			"name": "Regression Test for DarkStar Client",
+			"item": [
+				{
+					"name": "Publish Telemetry",
+					"event": [
 						{
-							"key": "password",
-							"value": "password",
-							"type": "string"
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
 						},
 						{
-							"key": "username",
-							"value": "user",
-							"type": "string"
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status is 200 Created\", function() {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response body contains message\", function() {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.equals(\"Telemetry data published successfully\")",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"latitude\": 37.7749,\n    \"longitude\": -122.4194,\n    \"altitude\": 80,\n    \"velocity\": 8,\n    \"systemStatus\": \"OPERATIONAL\",\n    \"timestamp\": \"2023-03-20T12:34:56.789Z\",\n    \"mission\": {\n        \"id\": 2\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{host}}{{basePath}}/telemetry",
-					"host": [
-						"{{host}}{{basePath}}"
 					],
-					"path": [
-						"telemetry"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Publish Health",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "password",
-							"type": "string"
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
 						},
-						{
-							"key": "username",
-							"value": "user",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"reportingSystem\": \"ELECTRICAL\",\n    \"status\": \"DOWN\",\n    \"errorCode\": \"\",\n    \"errorDescription\": \"\",\n    \"reportingTimestamp\": \"2023-03-20T12:34:56.789Z\",\n    \"mission\": {\n        \"id\": 3\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{host}}{{basePath}}/health",
-					"host": [
-						"{{host}}{{basePath}}"
-					],
-					"path": [
-						"health"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Publish Image",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "password",
-							"type": "string"
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"latitude\": 37.7749,\n    \"longitude\": -122.4194,\n    \"altitude\": 80,\n    \"velocity\": 8,\n    \"systemStatus\": \"OPERATIONAL\",\n    \"timestamp\": \"2023-03-20T12:34:56.789Z\",\n    \"mission\": {\n        \"id\": 2\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
-						{
-							"key": "username",
-							"value": "user",
-							"type": "string"
+						"url": {
+							"raw": "{{host}}{{basePath}}/telemetry",
+							"host": [
+								"{{host}}{{basePath}}"
+							],
+							"path": [
+								"telemetry"
+							]
 						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/octet-stream",
-						"type": "default"
-					}
-				],
-				"body": {
-					"mode": "file",
-					"file": {
-						"src": "/Users/ashok/Downloads/visa-gold-recto-800x450.jpeg"
 					},
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"response": []
 				},
-				"url": {
-					"raw": "{{host}}{{basePath}}/images?missionId=2",
-					"host": [
-						"{{host}}{{basePath}}"
-					],
-					"path": [
-						"images"
-					],
-					"query": [
+				{
+					"name": "Publish Health",
+					"event": [
 						{
-							"key": "missionId",
-							"value": "2"
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status is 200 Created\", function() {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response body contains message\", function() {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.equals(\"Health data published successfully\")",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
-					]
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"reportingSystem\": \"ELECTRICAL\",\n    \"status\": \"DOWN\",\n    \"errorCode\": \"\",\n    \"errorDescription\": \"\",\n    \"reportingTimestamp\": \"2023-03-20T12:34:56.789Z\",\n    \"mission\": {\n        \"id\": 2\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}{{basePath}}/health",
+							"host": [
+								"{{host}}{{basePath}}"
+							],
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Publish Image",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status is 200 Created\", function() {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response body contains message\", function() {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.equals(\"Images published successfully\")",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/octet-stream",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "file",
+							"file": {
+								"src": "/Users/ashok/Downloads/visa-gold-recto-800x450.jpeg"
+							},
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}{{basePath}}/images?missionId=2",
+							"host": [
+								"{{host}}{{basePath}}"
+							],
+							"path": [
+								"images"
+							],
+							"query": [
+								{
+									"key": "missionId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request without authentication",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status is 401 Unauthorized\", function() {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableCookies": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"latitude\": 37.7749,\n    \"longitude\": -122.4194,\n    \"altitude\": 80,\n    \"velocity\": 8,\n    \"systemStatus\": \"OPERATIONAL\",\n    \"timestamp\": \"2023-03-20T12:34:56.789Z\",\n    \"mission\": {\n        \"id\": 2\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}{{basePath}}/telemetry",
+							"host": [
+								"{{host}}{{basePath}}"
+							],
+							"path": [
+								"telemetry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mission Id doesnot exists",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status is 404 Not Found\", function() {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Response body contains message\", function() {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.equals(\"Mission does not exists\")",
+									"    pm.expect(jsonData.code).to.equals(404)",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"reportingSystem\": \"ELECTRICAL\",\n    \"status\": \"DOWN\",\n    \"errorCode\": \"\",\n    \"errorDescription\": \"\",\n    \"reportingTimestamp\": \"2023-03-20T12:34:56.789Z\",\n    \"mission\": {\n        \"id\": 3\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}{{basePath}}/health",
+							"host": [
+								"{{host}}{{basePath}}"
+							],
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid Image Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status is 400 Bad Request\", function() {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Response body contains message\", function() {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.equals(\"Request should have missionId in the query param\")",
+									"    pm.expect(jsonData.code).to.equals(400)",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/octet-stream",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "file",
+							"file": {
+								"src": "/Users/ashok/Downloads/visa-gold-recto-800x450.jpeg"
+							},
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}{{basePath}}/images",
+							"host": [
+								"{{host}}{{basePath}}"
+							],
+							"path": [
+								"images"
+							],
+							"query": [
+								{
+									"key": "missionId",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid Telemetry Request",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status is 400 Bad Request\", function() {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Response body contains message\", function() {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.error).to.equals(\"Bad Request\")",
+									"    pm.expect(jsonData.status).to.equals(400)",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"latitude\": 37.7749,\n    \"longitude\": -122.4194,\n    \"altitude\": 80,\n    \"velocity\": 8,\n    \"systemStatus\": \"OPERATIONAL1\",\n    \"timestamp\": \"2023-03-20T12:34:56.789Z\",\n    \"mission\": {\n        \"id\": 2\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}{{basePath}}/telemetry",
+							"host": [
+								"{{host}}{{basePath}}"
+							],
+							"path": [
+								"telemetry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid Health Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status is 400 Bad Request\", function() {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Response body contains message\", function() {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.error).to.equals(\"Bad Request\")",
+									"    pm.expect(jsonData.status).to.equals(400)",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"reportingSystem\": \"ELECTRICAL\",\n    \"status\": \"DOWN\",\n    \"errorCode\": \"\",\n    \"errorDescription\": \"\",\n    \"reportingTimestamp\": \"2023-03-20\",\n    \"mission\": {\n        \"id\": 2\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}{{basePath}}/health",
+							"host": [
+								"{{host}}{{basePath}}"
+							],
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Swagger",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{host}}/v3/api-docs",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"v3",
-						"api-docs"
-					]
+			"name": "Apis",
+			"item": [
+				{
+					"name": "Publish Telemetry",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"latitude\": 37.7749,\n    \"longitude\": -122.4194,\n    \"altitude\": 80,\n    \"velocity\": 8,\n    \"systemStatus\": \"OPERATIONAL\",\n    \"timestamp\": \"2023-03-20T12:34:56.789Z\",\n    \"mission\": {\n        \"id\": 2\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}{{basePath}}/telemetry",
+							"host": [
+								"{{host}}{{basePath}}"
+							],
+							"path": [
+								"telemetry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Publish Health",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"reportingSystem\": \"ELECTRICAL\",\n    \"status\": \"DOWN\",\n    \"errorCode\": \"\",\n    \"errorDescription\": \"\",\n    \"reportingTimestamp\": \"2023-03-20T12:34:56.789Z\",\n    \"mission\": {\n        \"id\": 2\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}{{basePath}}/health",
+							"host": [
+								"{{host}}{{basePath}}"
+							],
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Publish Image",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/octet-stream",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "file",
+							"file": {
+								"src": "/Users/ashok/Downloads/visa-gold-recto-800x450.jpeg"
+							},
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}{{basePath}}/images?missionId=2",
+							"host": [
+								"{{host}}{{basePath}}"
+							],
+							"path": [
+								"images"
+							],
+							"query": [
+								{
+									"key": "missionId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Swagger",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/v3/api-docs",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v3",
+								"api-docs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actuator Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/actuator/health",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"actuator",
+								"health"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "Actuator Health",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{host}}/actuator/health",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"actuator",
-						"health"
-					]
-				}
-			},
-			"response": []
+			]
 		}
 	]
 }

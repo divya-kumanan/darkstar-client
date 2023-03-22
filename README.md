@@ -36,7 +36,7 @@ This will start the container and map port 8080 in the container to port 8080 on
 
 2. Access the darkstar-client in your web browser:
 ```
-http://localhost:8080/actuator/health
+http://localhost:8090/actuator/health
 ```
 This will bring up the health status of your Spring Boot application.
 
@@ -52,18 +52,25 @@ docker stop container_id
 ```
 Replace `container_id` with the actual container ID for `darkstar-client`.
 
-## View the Postman Collection
+## View the Postman Collection for DarkStar Server and Client
 1. Open the Postman App
 2. Import the collection `DarkStar Client.postman_collection.json` and `DarkStarClient Local.postman_collection.json`  from the root folder of darkstar-client
 3. Import the collection `DarkStar Server.postman_collection.json` and `DarkStarServer Local.postman_collection.json`  from the root folder of darkstar-client.
 4. Run the server/client request based on the server/client environment
 
+## Running the Postman Collection for DarkStar Client
+1. Open the Postman App
+2. Import the collection `DarkStar Client.postman_collection.json` and `DarkStarClient Local.postman_collection.json`  from the root folder of darkstar-client.
+3. Click on Runner and drag the folder `egression Test for DarkStar Client` to the Runner
+4. Select the environment `DarkStarClient Local`
+5. Start Run
+
 ## View Open-Api Specification(Swagger) for darkstar-client
 1. Access the swagger document [openapi yaml file]
 ```
-http://localhost:8080/v3/api-docs
+http://localhost:8090/v3/api-docs
 ```
 2. Access the swagger document in UI
 ```
-http://localhost:8080/swagger-ui/index.html
+http://localhost:8090/swagger-ui/index.html
 ```
